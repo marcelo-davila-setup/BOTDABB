@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adriana Sousa - Transformação Mental</title>
+    
+    <!-- Meta Tags para Meta Ads e SEO -->
+    <meta name="description" content="Transformação mental personalizada com Adriana Sousa. Especialista em desenvolvimento pessoal e autoconhecimento.">
+    <meta property="og:title" content="Adriana Sousa - Transformação Mental">
+    <meta property="og:description" content="Transformação mental personalizada para sua região. Desperte seu potencial com técnicas comprovadas.">
+    <meta property="og:image" content="https://pub-e40d9ad14e5a4e13b2bfe7e2ae67bb03.r2.dev/Adriana-vmake%20(1).png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Preload otimizado -->
+    <link rel="preload" as="image" href="https://pub-e40d9ad14e5a4e13b2bfe7e2ae67bb03.r2.dev/Adriana-vmake%20(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #F8F5F0;
+            --text: #33353A;
+            --accent: #D4AF37;
+            --dark: #1A2035;
+            --white: #ffffff;
+            --purple: #7C3AED;
+            --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #FFD700 70%, #B8860B 100%);
+            --shadow-luxury: 0 15px 50px rgba(26, 32, 53, 0.2);
+            
+            /* Cores para cada frase */
+            --cor-estado: #FF6B35;        /* Laranja vibrante */
+            --cor-gentilico: #7C3AED;     /* Roxo */
+            --cor-horario: #059669;       /* Verde */
+            --cor-pergunta: #DC2626;      /* Vermelho */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #F8F5F0 0%, #E8E5E0 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .avatar-section {
+            text-align: center;
+            padding: 16px 12px 12px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-luxury);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 1s ease;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-info {
+            margin-bottom: 12px;
+            width: 100%;
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: 900;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .specialty {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .avatar-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .avatar {
+            width: 320px;
+            height: 480px;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 16px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: var(--shadow-luxury);
+            transition: all 0.5s ease;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            will-change: transform;
+            display: block;
+        }
+
+        .avatar-message {
+            position: absolute;
+            top: 22%;
+            left: 58%;
+            transform: translateX(-50%);
+            width: 160px;
+            font-size: 14px;
+            font-weight: 900;
+            color: var(--dark);
+            text-align: center;
+            opacity: 0;
+            transition: all 0.6s ease;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
+            padding: 8px 10px;
+            background: transparent;
+            border-radius: 8px;
+            line-height: 1.3;
+            z-index: 10;
+            border-right: 3px solid transparent;
+        }
+
+        .avatar-message.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+
+        /* Cores específicas para cada tipo de mensagem */
+        .avatar-message.fase-estado {
+            color: var(--cor-estado);
+            border-right-color: var(--cor-estado);
+        }
+
+        .avatar-message.fase-gentilico {
+            color: var(--cor-gentilico);
+            border-right-color: var(--cor-gentilico);
+        }
+
+        .avatar-message.fase-horario {
+            color: var(--cor-horario);
+            border-right-color: var(--cor-horario);
+        }
+
+        .avatar-message.fase-pergunta {
+            color: var(--cor-pergunta);
+            border-right-color: var(--cor-pergunta);
+            font-size: 16px;
+        }
+
+        /* Efeito de cursor piscando (typewriter) */
+        .avatar-message.typing {
+            border-right: 3px solid currentColor;
+            animation: blinkCursor 1s infinite;
+        }
+
+        @keyframes blinkCursor {
+            0%, 50% { border-right-color: currentColor; }
+            51%, 100% { border-right-color: transparent; }
+        }
+
+        /* Responsivo para diferentes tamanhos de tela */
+        @media (max-width: 480px) {
+            .container {
+                padding: 8px;
+            }
+            
+            .avatar-section {
+                padding: 12px 8px 8px;
+                border-radius: 16px;
+                max-width: 95%;
+            }
+            
+            .avatar {
+                width: 280px;
+                height: 420px;
+                border-radius: 14px;
+            }
+            
+            .avatar-message {
+                top: 20%;
+                left: 60%;
+                width: 140px;
+                font-size: 12px;
+            }
+            
+            .avatar-message.fase-pergunta {
+                font-size: 14px;
+            }
+            
+            .name {
+                font-size: 20px;
+            }
+
+            .specialty {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .avatar-section {
+                padding: 10px 6px 6px;
+                max-width: 98%;
+            }
+            
+            .avatar {
+                width: 240px;
+                height: 360px;
+                border-radius: 12px;
+            }
+            
+            .avatar-message {
+                top: 18%;
+                left: 62%;
+                width: 120px;
+                font-size: 11px;
+                padding: 6px 8px;
+            }
+            
+            .avatar-message.fase-pergunta {
+                font-size: 13px;
+            }
+            
+            .name {
+                font-size: 18px;
+            }
+
+            .specialty {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="avatar-section">
+            <div class="header-info">
+                <h1 class="name">Adriana Sousa</h1>
+                <p class="specialty">ESPECIALISTA EM TRANSFORMAÇÃO MENTAL</p>
+            </div>
+            
+            <div class="avatar-container">
+                <img 
+                    src="https://pub-e40d9ad14e5a4e13b2bfe7e2ae67bb03.r2.dev/Adriana-vmake%20(1).png" 
+                    alt="Adriana Sousa - Especialista em Transformação Mental"
+                    class="avatar"
+                    loading="eager"
+                >
+                <div id="avatarMessage" class="avatar-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== SISTEMA COMPLETO: 27 ESTADOS + DF + APIS DE BACKUP ====================
+        // Sequência otimizada: "OI DE [ESTADO]!" + "[GENTÍLICO] ÀS [HORA] - [EXPRESSÃO]!" + "[CUMPRIMENTO]!" + "TEM ALGO ESPECIAL TE ESPERANDO! 👇"
+
+        const SISTEMA_COMPLETO = {
+            ESTADOS_CONFIG: {
+                // ============ REGIÃO NORTE ============
+                'AC': {
+                    sigla: 'AC',
+                    nome: 'Acre',
+                    gentilico: 'ACRIANO',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Rio_Branco',
+                    utc_offset: -5
+                },
+                'AP': {
+                    sigla: 'AP', 
+                    nome: 'Amapá',
+                    gentilico: 'AMAPAENSE',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Fortaleza',
+                    utc_offset: -3
+                },
+                'AM': {
+                    sigla: 'AM',
+                    nome: 'Amazonas', 
+                    gentilico: 'AMAZONENSE',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Manaus',
+                    utc_offset: -4
+                },
+                'PA': {
+                    sigla: 'PA',
+                    nome: 'Pará',
+                    gentilico: 'PARAENSE',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Fortaleza',
+                    utc_offset: -3
+                },
+                'RO': {
+                    sigla: 'RO',
+                    nome: 'Rondônia',
+                    gentilico: 'RONDONIENSE',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Porto_Velho',
+                    utc_offset: -4
+                },
+                'RR': {
+                    sigla: 'RR',
+                    nome: 'Roraima',
+                    gentilico: 'RORAIMENSE',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Boa_Vista',
+                    utc_offset: -4
+                },
+                'TO': {
+                    sigla: 'TO',
+                    nome: 'Tocantins',
+                    gentilico: 'TOCANTINENSE',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Fortaleza',
+                    utc_offset: -3
+                },
+
+                // ============ REGIÃO NORDESTE ============
+                'AL': {
+                    sigla: 'AL',
+                    nome: 'Alagoas',
+                    gentilico: 'ALAGOANO',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Fortaleza',
+                    utc_offset: -3
+                },
+                'BA': {
+                    sigla: 'BA',
+                    nome: 'Bahia',
+                    gentilico: 'BAIANO',
+                    expressao: 'OXE, QUE MASSA!',
+                    timezone: 'America/Fortaleza',
+                    utc_offset: -3
+                },
+                'CE': {
+                    sigla: 'CE',
+                    nome: 'Ceará',
+                    gentilico: 'CEARENSE',
+                    expressao: 'OXENTE, QUE BOM!',
+                    timezone: 'America/Fortaleza',
+                    utc_offset: -3
+                },
+                'MA': {
+                    sigla: 'MA',
+                    nome: 'Maranhão',
+                    gentilico: 'MARANHENSE',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Fortaleza',
+                    utc_offset: -3
+                },
+                'PB': {
+                    sigla: 'PB',
+                    nome: 'Paraíba',
+                    gentilico: 'PARAIBANO',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Fortaleza',
+                    utc_offset: -3
+                },
+                'PE': {
+                    sigla: 'PE',
+                    nome: 'Pernambuco',
+                    gentilico: 'PERNAMBUCANO',
+                    expressao: 'ARÊ, QUE SHOW!',
+                    timezone: 'America/Recife',
+                    utc_offset: -3
+                },
+                'PI': {
+                    sigla: 'PI',
+                    nome: 'Piauí',
+                    gentilico: 'PIAUIENSE',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Fortaleza',
+                    utc_offset: -3
+                },
+                'RN': {
+                    sigla: 'RN',
+                    nome: 'Rio Grande do Norte',
+                    gentilico: 'POTIGUAR',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Fortaleza',
+                    utc_offset: -3
+                },
+                'SE': {
+                    sigla: 'SE',
+                    nome: 'Sergipe',
+                    gentilico: 'SERGIPANO',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Fortaleza',
+                    utc_offset: -3
+                },
+
+                // ============ REGIÃO CENTRO-OESTE ============
+                'DF': {
+                    sigla: 'DF',
+                    nome: 'Distrito Federal',
+                    gentilico: 'CANDANGO',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Sao_Paulo',
+                    utc_offset: -3
+                },
+                'GO': {
+                    sigla: 'GO',
+                    nome: 'Goiás',
+                    gentilico: 'GOIANO',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Sao_Paulo',
+                    utc_offset: -3
+                },
+                'MT': {
+                    sigla: 'MT',
+                    nome: 'Mato Grosso',
+                    gentilico: 'MATO-GROSSENSE',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Cuiaba',
+                    utc_offset: -4
+                },
+                'MS': {
+                    sigla: 'MS',
+                    nome: 'Mato Grosso do Sul',
+                    gentilico: 'SUL-MATO-GROSSENSE',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Campo_Grande',
+                    utc_offset: -4
+                },
+
+                // ============ REGIÃO SUDESTE ============
+                'ES': {
+                    sigla: 'ES',
+                    nome: 'Espírito Santo',
+                    gentilico: 'CAPIXABA',
+                    expressao: 'CANELA VERDE!',
+                    timezone: 'America/Sao_Paulo',
+                    utc_offset: -3
+                },
+                'MG': {
+                    sigla: 'MG',
+                    nome: 'Minas Gerais',
+                    gentilico: 'MINEIRO',
+                    expressao: 'QUE TREM BOM!',
+                    timezone: 'America/Sao_Paulo',
+                    utc_offset: -3
+                },
+                'RJ': {
+                    sigla: 'RJ',
+                    nome: 'Rio de Janeiro',
+                    gentilico: 'CARIOCA',
+                    expressao: 'MASSA DEMAIS!',
+                    timezone: 'America/Sao_Paulo',
+                    utc_offset: -3
+                },
+                'SP': {
+                    sigla: 'SP',
+                    nome: 'São Paulo',
+                    gentilico: 'PAULISTA',
+                    expressao: 'NOSSA!',
+                    timezone: 'America/Sao_Paulo',
+                    utc_offset: -3
+                },
+
+                // ============ REGIÃO SUL ============
+                'PR': {
+                    sigla: 'PR',
+                    nome: 'Paraná',
+                    gentilico: 'PARANAENSE',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Sao_Paulo',
+                    utc_offset: -3
+                },
+                'RS': {
+                    sigla: 'RS',
+                    nome: 'Rio Grande do Sul',
+                    gentilico: 'GAÚCHO',
+                    expressao: 'BAAAAH, QUE LEGAL!',
+                    timezone: 'America/Sao_Paulo',
+                    utc_offset: -3
+                },
+                'SC': {
+                    sigla: 'SC',
+                    nome: 'Santa Catarina',
+                    gentilico: 'CATARINENSE',
+                    expressao: 'QUE BOM TE ENCONTRAR!',
+                    timezone: 'America/Sao_Paulo',
+                    utc_offset: -3
+                }
+            },
+
+            // ============ HORÁRIO LOCAL POR ESTADO COM FALLBACKS ROBUSTOS ============
+            getHorarioLocal: function(estado) {
+                const config = this.ESTADOS_CONFIG[estado] || this.ESTADOS_CONFIG['SP'];
+                const agora = new Date();
+                
+                // Tentativa 1: Timezone específico do estado
+                try {
+                    const horarioLocal = new Date(agora.toLocaleString("en-US", {timeZone: config.timezone}));
+                    console.log(`⏰ Horário ${estado} via timezone ${config.timezone}:`, horarioLocal);
+                    return {
+                        hora: horarioLocal.getHours(),
+                        minuto: horarioLocal.getMinutes(),
+                        dia: horarioLocal.getDay(),
+                        formatado: `${horarioLocal.getHours().toString().padStart(2, '0')}:${horarioLocal.getMinutes().toString().padStart(2, '0')}`,
+                        metodo: 'timezone_especifico'
+                    };
+                } catch (error) {
+                    console.log(`❌ Erro timezone específico para ${estado}:`, error.message);
+                }
+                
+                // Tentativa 2: Fallback por região (baseado no UTC offset)
+                try {
+                    const offsetMinutos = config.utc_offset * 60;
+                    const utc = agora.getTime() + (agora.getTimezoneOffset() * 60000);
+                    const horarioLocal = new Date(utc + (offsetMinutos * 60000));
+                    console.log(`⏰ Horário ${estado} via UTC offset ${config.utc_offset}:`, horarioLocal);
+                    return {
+                        hora: horarioLocal.getHours(),
+                        minuto: horarioLocal.getMinutes(),
+                        dia: horarioLocal.getDay(),
+                        formatado: `${horarioLocal.getHours().toString().padStart(2, '0')}:${horarioLocal.getMinutes().toString().padStart(2, '0')}`,
+                        metodo: 'utc_offset'
+                    };
+                } catch (error) {
+                    console.log(`❌ Erro UTC offset para ${estado}:`, error.message);
+                }
+                
+                // Tentativa 3: Fallback por timezone similar
+                const fallbackTimezones = {
+                    'AC': 'America/Rio_Branco',
+                    'AM': 'America/Manaus', 
+                    'RO': 'America/Porto_Velho',
+                    'RR': 'America/Boa_Vista',
+                    'MT': 'America/Cuiaba',
+                    'MS': 'America/Campo_Grande',
+                    'default': 'America/Sao_Paulo'
+                };
+                
+                const fallbackTz = fallbackTimezones[estado] || fallbackTimezones.default;
+                try {
+                    const horarioLocal = new Date(agora.toLocaleString("en-US", {timeZone: fallbackTz}));
+                    console.log(`⏰ Horário ${estado} via fallback timezone ${fallbackTz}:`, horarioLocal);
+                    return {
+                        hora: horarioLocal.getHours(),
+                        minuto: horarioLocal.getMinutes(),
+                        dia: horarioLocal.getDay(),
+                        formatado: `${horarioLocal.getHours().toString().padStart(2, '0')}:${horarioLocal.getMinutes().toString().padStart(2, '0')}`,
+                        metodo: 'fallback_timezone'
+                    };
+                } catch (error) {
+                    console.log(`❌ Erro fallback timezone para ${estado}:`, error.message);
+                }
+                
+                // Tentativa 4: Horário do navegador como último recurso
+                console.log(`🏠 Usando horário do navegador para ${estado}`);
+                return {
+                    hora: agora.getHours(),
+                    minuto: agora.getMinutes(),
+                    dia: agora.getDay(),
+                    formatado: `${agora.getHours().toString().padStart(2, '0')}:${agora.getMinutes().toString().padStart(2, '0')}`,
+                    metodo: 'navegador_local'
+                };
+            },
+
+            // ============ GERAR SEQUÊNCIA COMPLETA PERSONALIZADA ============
+            gerarSequencia: function(estado) {
+                const config = this.ESTADOS_CONFIG[estado] || this.ESTADOS_CONFIG['SP'];
+                const tempo = this.getHorarioLocal(estado);
+                
+                // Determinar cumprimento baseado no horário
+                let cumprimento = "BOA TARDE!";
+                if (tempo.hora >= 5 && tempo.hora < 12) cumprimento = "BOM DIA!";
+                else if (tempo.hora >= 18 && tempo.hora < 24) cumprimento = "BOA NOITE!";
+                else if (tempo.hora >= 0 && tempo.hora < 5) cumprimento = "É MADRUGADA!";
+                
+                // Lógica para "DO" vs "DE" baseado na primeira letra
+                const preposicao = ['A', 'E', 'I', 'O', 'U'].includes(config.nome.charAt(0)) ? 'DO' : 'DE';
+                
+                return [
+                    {
+                        texto: `OI ${preposicao} ${config.nome}!`,
+                        classe: "fase-estado"
+                    },
+                    {
+                        texto: `${config.gentilico} ÀS ${tempo.formatado} - ${config.expressao}`,
+                        classe: "fase-gentilico"
+                    },
+                    {
+                        texto: cumprimento,
+                        classe: "fase-horario"
+                    },
+                    {
+                        texto: "TEM ALGO ESPECIAL TE ESPERANDO! 👇",
+                        classe: "fase-pergunta"
+                    }
+                ];
+            }
+        };
+
+        // ==================== DETECÇÃO DE LOCALIZAÇÃO COM 8 APIS DE BACKUP ====================
+
+        async function detectUserLocation() {
+            const apis = [
+                // ===== APIS PRINCIPAIS =====
+                {
+                    url: 'https://ipapi.co/json/',
+                    parse: (data) => ({
+                        regiao: data.region?.toLowerCase() || '',
+                        cidade: data.city || 'Brasil',
+                        pais: data.country_code || '',
+                        ip: data.ip
+                    })
+                },
+                {
+                    url: 'https://get.geojs.io/v1/ip/geo.json',
+                    parse: (data) => ({
+                        regiao: data.region?.toLowerCase() || '',
+                        cidade: data.city || 'Brasil',
+                        pais: data.country_code || '',
+                        ip: data.ip
+                    })
+                },
+                {
+                    url: 'http://ip-api.com/json/',
+                    parse: (data) => ({
+                        regiao: data.regionName?.toLowerCase() || '',
+                        cidade: data.city || 'Brasil',
+                        pais: data.countryCode || '',
+                        ip: data.query
+                    })
+                },
+                {
+                    url: 'https://ipwhois.app/json/',
+                    parse: (data) => ({
+                        regiao: data.region?.toLowerCase() || '',
+                        cidade: data.city || 'Brasil',
+                        pais: data.country_code || '',
+                        ip: data.ip
+                    })
+                },
+                
+                // ===== APIS DE BACKUP =====
+                {
+                    url: 'https://ipinfo.io/json',
+                    parse: (data) => ({
+                        regiao: data.region?.toLowerCase() || '',
+                        cidade: data.city || 'Brasil',
+                        pais: data.country || '',
+                        ip: data.ip
+                    })
+                },
+                {
+                    url: 'https://api.ipify.org?format=json',
+                    parse: (data) => ({
+                        regiao: '',
+                        cidade: 'Brasil',
+                        pais: 'BR',
+                        ip: data.ip
+                    })
+                },
+                {
+                    url: 'https://api.myip.com',
+                    parse: (data) => ({
+                        regiao: '',
+                        cidade: 'Brasil',
+                        pais: data.country || 'BR',
+                        ip: data.ip
+                    })
+                },
+                {
+                    url: 'https://httpbin.org/ip',
+                    parse: (data) => ({
+                        regiao: '',
+                        cidade: 'Brasil', 
+                        pais: 'BR',
+                        ip: data.origin
+                    })
+                }
+            ];
+
+            for (let i = 0; i < apis.length; i++) {
+                const api = apis[i];
+                try {
+                    console.log(`🌐 Tentando API ${i + 1}/${apis.length}: ${api.url}`);
+                    
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 4000);
+                    
+                    const response = await fetch(api.url, {
+                        signal: controller.signal,
+                        headers: { 
+                            'Accept': 'application/json',
+                            'User-Agent': 'Mozilla/5.0 (compatible; GeoDetector/1.0)'
+                        }
+                    });
+                    
+                    clearTimeout(timeoutId);
+                    
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    
+                    const data = await response.json();
+                    const parsed = api.parse(data);
+                    
+                    console.log(`✅ Sucesso API ${i + 1}:`, parsed);
+                    
+                    // Verificar se é Brasil e se tem região
+                    if (parsed.regiao && (parsed.pais === 'BR' || parsed.pais === 'Brazil' || !parsed.pais)) {
+                        const estado = mapearEstado(parsed.regiao);
+                        if (estado) {
+                            console.log(`🎯 Estado detectado: ${estado} via API ${i + 1}`);
+                            return { estado, cidade: parsed.cidade };
+                        }
+                    }
+                    
+                } catch (error) {
+                    console.log(`❌ Erro API ${i + 1} (${api.url}):`, error.message);
+                    continue;
+                }
+            }
+            
+            // ===== FALLBACK 1: TIMEZONE DO NAVEGADOR =====
+            console.log('🕒 Iniciando fallback por timezone...');
+            try {
+                const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                console.log(`⏰ Timezone detectado: ${timezone}`);
+                
+                const timezoneMap = {
+                    'America/Sao_Paulo': 'SP',
+                    'America/Fortaleza': 'CE', 
+                    'America/Recife': 'PE',
+                    'America/Manaus': 'AM',
+                    'America/Campo_Grande': 'MS',
+                    'America/Cuiaba': 'MT',
+                    'America/Porto_Velho': 'RO',
+                    'America/Rio_Branco': 'AC',
+                    'America/Boa_Vista': 'RR'
+                };
+                
+                for (const [tz, estado] of Object.entries(timezoneMap)) {
+                    if (timezone.includes(tz)) {
+                        console.log(`🎯 Estado detectado por timezone: ${estado}`);
+                        return { estado, cidade: 'Brasil' };
+                    }
+                }
+                
+                // Se é timezone brasileiro mas não específico, assumir SP
+                if (timezone.includes('America') || timezone.includes('Brazil')) {
+                    return { estado: 'SP', cidade: 'Brasil' };
+                }
+                
+            } catch (timezoneError) {
+                console.log('❌ Erro no fallback timezone:', timezoneError);
+            }
+            
+            // ===== FALLBACK FINAL: SÃO PAULO COMO PADRÃO =====
+            console.log('🏠 Usando fallback final: São Paulo');
+            return { estado: 'SP', cidade: 'Brasil' };
+        }
+
+        function mapearEstado(regiao) {
+            const mapeamento = {
+                // Nomes completos dos estados
+                'acre': 'AC', 'amazonas': 'AM', 'amapá': 'AP', 'amapa': 'AP',
+                'pará': 'PA', 'para': 'PA', 'rondônia': 'RO', 'rondonia': 'RO',
+                'roraima': 'RR', 'tocantins': 'TO',
+                
+                'alagoas': 'AL', 'bahia': 'BA', 'ceará': 'CE', 'ceara': 'CE',
+                'maranhão': 'MA', 'maranhao': 'MA', 'paraíba': 'PB', 'paraiba': 'PB',
+                'pernambuco': 'PE', 'piauí': 'PI', 'piaui': 'PI',
+                'rio grande do norte': 'RN', 'sergipe': 'SE',
+                
+                'distrito federal': 'DF', 'brasília': 'DF', 'brasilia': 'DF',
+                'goiás': 'GO', 'goias': 'GO', 'mato grosso': 'MT',
+                'mato grosso do sul': 'MS',
+                
+                'espírito santo': 'ES', 'espirito santo': 'ES',
+                'minas gerais': 'MG', 'rio de janeiro': 'RJ',
+                'são paulo': 'SP', 'sao paulo': 'SP',
+                
+                'paraná': 'PR', 'parana': 'PR', 'rio grande do sul': 'RS',
+                'santa catarina': 'SC',
+                
+                // Siglas dos estados
+                'ac': 'AC', 'am': 'AM', 'ap': 'AP', 'pa': 'PA', 'ro': 'RO',
+                'rr': 'RR', 'to': 'TO', 'al': 'AL', 'ba': 'BA', 'ce': 'CE',
+                'ma': 'MA', 'pb': 'PB', 'pe': 'PE', 'pi': 'PI', 'rn': 'RN',
+                'se': 'SE', 'df': 'DF', 'go': 'GO', 'mt': 'MT', 'ms': 'MS',
+                'es': 'ES', 'mg': 'MG', 'rj': 'RJ', 'sp': 'SP', 'pr': 'PR',
+                'rs': 'RS', 'sc': 'SC',
+                
+                // Variações em inglês e outras
+                'state of são paulo': 'SP', 'state of rio de janeiro': 'RJ',
+                'state of minas gerais': 'MG', 'state of bahia': 'BA',
+                'state of paraná': 'PR', 'state of rio grande do sul': 'RS',
+                'sao paulo state': 'SP', 'rio de janeiro state': 'RJ'
+            };
+            
+            const estadoEncontrado = mapeamento[regiao.toLowerCase()];
+            if (estadoEncontrado) {
+                console.log(`🗺️ Mapeamento: "${regiao}" -> ${estadoEncontrado}`);
+            }
+            return estadoEncontrado || null;
+        }
+
+        // ==================== EFEITO TYPEWRITER COM CORES ====================
+
+        async function typewriterEffect(element, texto, velocidade = 80) {
+            element.textContent = '';
+            element.classList.add('typing');
+            
+            for (let i = 0; i < texto.length; i++) {
+                element.textContent += texto.charAt(i);
+                await sleep(velocidade);
+            }
+            
+            element.classList.remove('typing');
+        }
+
+        async function startAvatarSequence() {
+            const message = document.getElementById('avatarMessage');
+            
+            try {
+                // Detectar localização
+                const location = await detectUserLocation();
+                console.log('📍 Localização final detectada:', location);
+                
+                // Gerar sequência personalizada
+                const sequencia = SISTEMA_COMPLETO.gerarSequencia(location.estado);
+                console.log('🎯 Sequência personalizada:', sequencia);
+                
+                // Executar sequência de mensagens com cores e typewriter - PAUSAS UNIFORMES 1.5s
+                for (let i = 0; i < sequencia.length; i++) {
+                    const item = sequencia[i];
+                    
+                    // Limpar classes e ocultar
+                    message.className = 'avatar-message';
+                    message.style.opacity = '0';
+                    await sleep(200);
+                    
+                    // Adicionar classe da fase e mostrar
+                    message.classList.add(item.classe);
+                    message.style.opacity = '1';
+                    
+                    // Aplicar efeito typewriter
+                    await typewriterEffect(message, item.texto, 60); // Velocidade rápida
+                    
+                    // Pausa uniforme de 1.5s entre todas as frases (exceto a última que permanece)
+                    if (i < sequencia.length - 1) {
+                        await sleep(1500);
+                    }
+                }
+            } catch (error) {
+                console.error('❌ Erro na sequência do avatar:', error);
+                // Fallback de emergência
+                message.textContent = "TEM ALGO ESPECIAL TE ESPERANDO! 👇";
+                message.classList.add('fase-pergunta');
+                message.style.opacity = '1';
+            }
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // ==================== INICIALIZAÇÃO ====================
+        
+        console.log('🚀 Sistema OTIMIZADO carregado: 27 estados + DF + pausas uniformes 1.5s');
+        console.log('📊 Estados configurados:', Object.keys(SISTEMA_COMPLETO.ESTADOS_CONFIG).length);
+        console.log('✨ Expressões especiais: ES="CANELA VERDE!" | MG="QUE TREM BOM!" | BA="OXE, QUE MASSA!" | RS="BAAAAH, QUE LEGAL!"');
+        console.log('👩‍💼 Avatar da Adriana carregado: https://pub-e40d9ad14e5a4e13b2bfe7e2ae67bb03.r2.dev/Adriana-vmake%20(1).png');
+        console.log('🕒 Cumprimentos dinâmicos: BOM DIA | BOA TARDE | BOA NOITE | É MADRUGADA');
+        console.log('⏰ Fusos horários: AC(-5h) | AM/MT/MS/RO/RR(-4h) | Resto(-3h) + fallbacks robustos');
+        console.log('💬 Sequência OTIMIZADA: ESTADO → GENTÍLICO+EXPRESSÃO → CUMPRIMENTO → "TEM ALGO ESPECIAL TE ESPERANDO! 👇"');
+        console.log('🎯 Pausas uniformes: 1.5s entre todas as mensagens | Última permanece visible');
+        
+        // Iniciar sequência após 2 segundos
+        setTimeout(() => {
+            startAvatarSequence();
+        }, 2000);
+        
+    </script>
+</body>
+</html>
